@@ -7,10 +7,10 @@ It has now from 7 block unlike PyCraft which had 14 blocks!
 
 # Blocks
 
-1 = Grassblock
-2 = Stoneblock
-3 = Dirtblock
-4 = Sandblock
-5 = WoodLog
-6 = Planks
-7 = Ice
+1 = Grassblock <br>
+2 = Stoneblock <br>
+3 = Dirtblock <br>
+4 = Sandblock <br>
+5 = WoodLog <br>
+6 = Planks <br>
+7 = Ice <br>
