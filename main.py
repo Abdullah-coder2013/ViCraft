@@ -96,7 +96,7 @@ class Inventory(Entity):
 		super().__init__(
 			parent = camera.ui,
 			model = 'quad',
-			scale = (0.3,0.1,0.1),
+			scale = (0.6,0.10,0),
 			position =  Vec2(0, -0.4),
 			texture = 'assets/inventory.png'
 		)
