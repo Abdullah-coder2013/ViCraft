@@ -3,6 +3,7 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 from perlin_noise import PerlinNoise
 import random
 import sys
+from ursina.shaders import lit_with_shadows_shader
 
 app = Ursina()
 
@@ -21,6 +22,7 @@ block_pick = 1
 window.fps_counter.enabled = False
 window.exit_button.visible = False
 window.fullscreen = True
+window.color = color.rgb(0,181,226)
 
 def update():
 	global block_pick
@@ -66,15 +68,6 @@ class Voxel(Button):
 				punch_sound.play()
 				destroy(self)
 
-class Sky(Entity):
-	def __init__(self):
-		super().__init__(
-			parent = scene,
-			model = 'sphere',
-			texture = sky,
-			scale = 150,
-			double_sided = True)
-
 class Hand(Entity):
 	def __init__(self):
 		super().__init__(
@@ -110,8 +103,7 @@ for z in range(-30,30):
 	    voxel = Voxel(position=(x,y,z))
 
 player = FirstPersonController()
-player.gravity = 0.3
-sky = Sky()
+player.gravity = 0.4
 hand = Hand()
 inventory = Inventory()
 
