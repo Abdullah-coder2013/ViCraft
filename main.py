@@ -8,14 +8,14 @@ from ursina.shaders import lit_with_shadows_shader
 app = Ursina()
 
 sky = load_texture("block images/sky.png")
-dirt = load_texture("block images/dirt.png")
-sand = load_texture("block images/sand.png")
-stone = load_texture("block images/stone.png")
+dirt = load_texture("assets/dirtblock.png")
+sand = load_texture("assets/sand.png")
+stone = load_texture("assets/stone.png")
 grassblock = load_texture("assets/grassblock.png")
 log = load_texture("assets/log.png")
 planks = load_texture("assets/planks.png")
 arm = load_texture("assets/alt.png")
-ice = load_texture("block images/ice.png")
+cobble = load_texture("assets/cobbler.png")
 punch_sound   = Audio('assets/punch_sound',loop = False, autoplay = False)
 block_pick = 1
 
@@ -57,12 +57,12 @@ class Voxel(Button):
 			if key == 'right mouse down':
 				punch_sound.play()
 				if block_pick == 1: voxel = Voxel(position = self.position + mouse.normal, texture = grassblock)
-				if block_pick == 2: voxel = Voxel(position = self.position + mouse.normal, texture = stone)
-				if block_pick == 3: voxel = Voxel(position = self.position + mouse.normal, texture = dirt)
-				if block_pick == 4: voxel = Voxel(position = self.position + mouse.normal, texture = sand)
-				if block_pick == 5: voxel = Voxel(position = self.position + mouse.normal, texture = log)
-				if block_pick == 6: voxel = Voxel(position = self.position + mouse.normal, texture = planks)
-				if block_pick == 7: voxel = Voxel(position = self.position + mouse.normal, texture = ice)
+				if block_pick == 2: voxel = Voxel(position = self.position + mouse.normal, texture = dirt)
+				if block_pick == 3: voxel = Voxel(position = self.position + mouse.normal, texture = stone)
+				if block_pick == 4: voxel = Voxel(position = self.position + mouse.normal, texture = cobble)
+				if block_pick == 5: voxel = Voxel(position = self.position + mouse.normal, texture = sand)
+				if block_pick == 6: voxel = Voxel(position = self.position + mouse.normal, texture = log)
+				if block_pick == 7: voxel = Voxel(position = self.position + mouse.normal, texture = planks)
 
 			if key == 'left mouse down':
 				punch_sound.play()
