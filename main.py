@@ -3,7 +3,6 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 from perlin_noise import PerlinNoise
 import random
 import sys
-from ursina.shaders import lit_with_shadows_shader
 
 app = Ursina()
 
@@ -16,7 +15,8 @@ log = load_texture("assets/log.png")
 planks = load_texture("assets/planks.png")
 arm = load_texture("assets/alt.png")
 cobble = load_texture("assets/cobbler.png")
-punch_sound   = Audio('assets/punch_sound',loop = False, autoplay = False)
+punch_sound   = Audio('assets/break.ogg',loop = False, autoplay = False)
+bgm = Audio("assets/music.ogg", loop = False, autoplay = True)
 block_pick = 1
 
 window.fps_counter.enabled = False
