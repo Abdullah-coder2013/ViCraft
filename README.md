@@ -18,5 +18,4 @@ It has now 7 blocks unlike PyCraft which had 14 blocks!
 # UnChangable Bugs
 
 There are a few bugs that cannot be fixed, but there are ways to get around them.
-First of all, there is a bug that when you jump in the void and quickly go forward, you will lay down in the ground. This is not actually a problem, but it is not supposed to happen.
 Then the second bug is that you can't move/jump at the start of the game (this happens sometimes!). You must break a block and then place it again. Then you can move/jump.

@@ -6,7 +6,6 @@ import sys
 
 app = Ursina()
 
-sky = load_texture("block images/sky.png")
 dirt = load_texture("assets/dirtblock.png")
 sand = load_texture("assets/sand.png")
 stone = load_texture("assets/stone.png")
@@ -103,7 +102,7 @@ for z in range(-30,30):
 	    voxel = Voxel(position=(x,y,z))
 
 player = FirstPersonController()
-player.gravity = 0.4
+player.gravity = 0.7
 hand = Hand()
 inventory = Inventory()
 
