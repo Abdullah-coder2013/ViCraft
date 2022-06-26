@@ -3,6 +3,7 @@ from ursina.prefabs.first_person_controller import FirstPersonController
 from perlin_noise import PerlinNoise
 import random
 import sys
+import keyboard
 
 app = Ursina()
 
@@ -14,14 +15,16 @@ log = load_texture("assets/log.png")
 planks = load_texture("assets/planks.png")
 arm = load_texture("assets/alt.png")
 cobble = load_texture("assets/cobbler.png")
+comm = load_texture("assets/com.png")
 punch_sound   = Audio('assets/break.ogg',loop = False, autoplay = False)
-bgm = Audio("assets/music.ogg", loop = False, autoplay = True)
+bgm = Audio("assets/music.ogg", loop = True, autoplay = True)
 block_pick = 1
 
 window.fps_counter.enabled = False
 window.exit_button.visible = False
 window.fullscreen = True
-window.color = color.rgb(0,181,226)
+window.color = color.inverse(color.brown)
+jumping = True
 
 def update():
 	global block_pick
@@ -38,7 +41,29 @@ def update():
 	if held_keys['5']: block_pick = 5
 	if held_keys['6']: block_pick = 6
 	if held_keys['7']: block_pick = 7
+	if held_keys['/']: block_pick = 8
 	if held_keys['escape']: sys.exit()
+ 
+class cVoxel(Button):
+	def __init__(self, position = (0,0,0)):
+		super().__init__(
+			parent = scene,
+			position = position,
+			model = 'assets/block',
+			origin_y = 0.5,
+			texture = comm,
+			color = color.color(0,0,random.uniform(0.9,1)),
+			scale = 0.5
+   			)
+	def input(self,key):
+		if self.hovered:
+			if key == 'right mouse down':
+				punch_sound.play()
+				keyboard.send('f5')
+			if key == 'left mouse down':
+				punch_sound.play()
+				destroy(self)
+
 
 class Voxel(Button):
 	def __init__(self, position = (0,0,0), texture = grassblock):
@@ -49,7 +74,8 @@ class Voxel(Button):
 			origin_y = 0.5,
 			texture = texture,
 			color = color.color(0,0,random.uniform(0.9,1)),
-			scale = 0.5)
+			scale = 0.5
+   			)
 
 	def input(self,key):
 		if self.hovered:
@@ -62,6 +88,7 @@ class Voxel(Button):
 				if block_pick == 5: voxel = Voxel(position = self.position + mouse.normal, texture = sand)
 				if block_pick == 6: voxel = Voxel(position = self.position + mouse.normal, texture = log)
 				if block_pick == 7: voxel = Voxel(position = self.position + mouse.normal, texture = planks)
+				if block_pick == 8: cvoxel = cVoxel(position = self.position + mouse.normal)
 
 			if key == 'left mouse down':
 				punch_sound.play()
@@ -103,6 +130,8 @@ for z in range(-30,30):
 
 player = FirstPersonController()
 player.gravity = 0.7
+player.cursor = Entity(parent=camera.ui, model='quad', color=color.light_gray, scale=.008, rotation_z=45)
+player.jumping = True
 hand = Hand()
 inventory = Inventory()
 
