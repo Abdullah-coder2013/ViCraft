@@ -107,7 +107,6 @@ for z in range(-30,30):
 player = FirstPersonController()
 player.gravity = 0.6
 player.cursor = Entity(parent=camera.ui, model='quad', color=color.light_gray, scale=.008, rotation_z=45)
-player.jumping = True
 hand = Hand()
 inventory = Inventory()
 
