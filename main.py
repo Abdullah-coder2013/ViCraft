@@ -20,8 +20,9 @@ bgm = Audio("assets/music.ogg", loop = True, autoplay = True)
 block_pick = 1
 
 window.fps_counter.enabled = False
+window.borderless = False
 window.exit_button.visible = False
-window.fullscreen = True
+window.fullscreen = False
 window.color = color.inverse(color.brown)
 
 def update():
